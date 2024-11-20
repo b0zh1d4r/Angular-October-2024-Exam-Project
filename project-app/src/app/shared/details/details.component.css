@@ -1,0 +1,124 @@
+@import url("https://fonts.googleapis.com/css2?family=Madimi+One&display=swap");
+
+body {
+    text-decoration: none;
+    font-family: "Madimi One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    text-shadow: 2px 2px #000000;
+    background-color: #f4f4f9;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0; /* Ensure no margin is added by default */
+}
+
+.course-details-container {
+    text-decoration: none;
+    font-family: "Madimi One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    padding: 15px; /* Reduced padding for a smaller container */
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%; /* Make the container width more flexible */
+    max-width: 400px; /* Limit the maximum width to keep it small */
+    min-width: 250px; /* Minimum width for the container */
+    min-height: 250px; /* Minimum height for the container */
+    margin: 0 auto; /* Ensure the container is horizontally centered */
+    margin-top: 50px;
+}
+
+.course-details-container h1 {
+    text-decoration: none;
+    font-family: "Madimi One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    text-shadow: 2px 2px #000000;
+    font-size: 1.5rem; /* Reduced font size for a smaller container */
+    color: #ffffff;
+    margin-bottom: 15px; /* Reduced margin */
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.course-detail-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    margin: 10px auto; /* Reduced margin */
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.course-detail-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.course-detail-img {
+    width: 100%;
+    height: auto;
+    max-height: 200px; /* Reduced image height */
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.course-info {
+    padding: 10px; /* Reduced padding */
+    color: #333;
+}
+
+.course-title {
+    font-size: 1.25rem; /* Slightly smaller font size */
+    color: #2d2d2d;
+    margin-bottom: 8px; /* Reduced margin */
+    font-weight: bold;
+}
+
+.course-description {
+    font-size: 0.9rem; /* Reduced font size */
+    color: #555;
+    line-height: 1.4;
+    margin-bottom: 8px; /* Reduced margin */
+}
+
+.course-price, .course-start-date, .course-signed-count {
+    font-size: 0.8rem; /* Reduced font size */
+    color: #333;
+    margin-bottom: 4px; /* Reduced margin */
+}
+
+.sign-btn {
+    display: inline-block;
+    padding: 8px 16px; /* Reduced padding */
+    text-decoration: none;
+    font-family: "Madimi One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    background-color: rgb(0, 255, 255);
+    color: #fff;
+    font-size: 0.9rem; /* Reduced font size */
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.sign-btn:hover {
+    background-color: rgb(0, 125, 125);
+}

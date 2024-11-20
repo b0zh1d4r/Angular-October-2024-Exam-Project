@@ -1,0 +1,14 @@
+<div class="nav-wrapper">
+    <div class="nav-btn" routerLink="/">Home</div>
+    <div class="nav-btn" routerLink="/search">Search</div>
+    <div class="nav-btn" routerLink="/courses">Courses</div>
+    <div class="nav-btn" routerLink="/about">About</div>
+    @if (isAuthenticated) {
+        <div class="nav-btn" routerLink="/create">Create Course</div>
+        <div class="nav-btn" routerLink="/profile">Profile</div>
+        <div class="nav-btn" routerLink="/logout">Logout</div>
+    } @else {
+        <div class="nav-btn" routerLink="/login">Login</div>
+        <div class="nav-btn" routerLink="/register">Register</div>
+    }
+</div>
