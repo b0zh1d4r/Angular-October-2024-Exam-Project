@@ -17,6 +17,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 // app.use(corsMiddleware);
+// test
 app.use(routes);
 
 app.listen(3000, () => console.log('Server is listening on http://localhost:3000'))
