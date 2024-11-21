@@ -44,6 +44,13 @@ label {
     margin-bottom: 5px;
 }
 
+.error {
+    display: block;
+    font-size: 14px;
+    color: #ff0000;
+    margin-bottom: 10px;
+}
+
 input {
     width: 100%;
     padding: 10px;

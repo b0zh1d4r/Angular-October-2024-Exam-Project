@@ -3,6 +3,7 @@
 body {
   width: 100%;
   background-image: url(../public/background.jpg);
+  background-size: cover;
   color: #fff;
   overflow-x: hidden;
   overflow-y: auto;
