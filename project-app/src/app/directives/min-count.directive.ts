@@ -2,25 +2,25 @@ import { Directive, Input } from "@angular/core";
 import { AbstractControl, NG_VALIDATORS, ValidationErrors, Validator } from "@angular/forms";
 
 @Directive({
-    selector: '[appMaxCount]',
+    selector: '[appMinCount]',
     standalone: true,
     providers: [
         {
             provide: NG_VALIDATORS,
             multi: true,
-            useExisting: MaxCountDirective
+            useExisting: MinCountDirective
         }
     ]
 })
 
-export class MaxCountDirective implements Validator {
-    @Input() appMaxCount: number | undefined;
+export class MinCountDirective implements Validator {
+    @Input() appMinCount: number | undefined;
 
     validate(control: AbstractControl): ValidationErrors | null {
         const len = control.value?.length || 0;
 
-        if (!this.appMaxCount || len > this.appMaxCount) {
-            return { appMaxCount: this.appMaxCount };
+        if (!this.appMinCount || len < this.appMinCount) {
+            return { appMinCount: this.appMinCount };
         }
 
         return null;

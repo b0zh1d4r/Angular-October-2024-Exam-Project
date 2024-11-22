@@ -1,26 +1,27 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { MaxCountDirective } from '../../directives/max-count.directive';
+import { MinCountDirective } from '../../directives/min-count.directive';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [RouterLink, FormsModule, MaxCountDirective],
+  imports: [RouterLink, FormsModule, MinCountDirective],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
   @ViewChild('loginForm') form: NgForm | undefined;
 
-  maxCountNumber = 4;
+  minCountNumber = 4;
 
   formSubmitHandler() {
-    if (this.form?.invalid) {
-      console.log('This form is invalid!');
+    const form = this.form!;
+
+    if (form?.invalid) {
       return;
     }
 
-    console.log(this.form?.value);
+    form.reset();
   }
 }

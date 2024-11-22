@@ -22,14 +22,14 @@
   
         <div class="input-group">
           <label for="password">Password:</label>
-          <input type="password" id="password" name="password" placeholder="Enter your password" ngModel #passwordInput="ngModel" password required [appMaxCount]="maxCountNumber">
+          <input type="password" id="password" name="password" placeholder="Enter your password" ngModel #passwordInput="ngModel" password required [appMinCount]="minCountNumber">
         </div>
 
         @if (passwordInput.touched) {
           <div>
 
-            @if(passwordInput.errors?.['appMaxCount']) {
-              <div class="error">Password must be at least {{maxCountNumber}} characters long!</div>
+            @if(passwordInput.errors?.['appMinCount']) {
+              <div class="error">Password must be at least {{minCountNumber}} characters long!</div>
             }
 
           </div>
