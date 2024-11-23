@@ -101,10 +101,10 @@ body {
     color: #fff;
     font-size: 1rem;
     font-weight: bold;
-    text-decoration: none;
     border-radius: 5px;
     transition: background-color 0.3s ease;
-    text-decoration: none;
+    cursor: pointer; /* Ensures the pointer cursor appears for div */
+    text-align: center; /* Centers the text inside the div */
     font-family: "Madimi One", sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -113,6 +113,7 @@ body {
 .btn:hover {
     background-color: rgb(0, 125, 125);
 }
+
 
 @media (max-width: 768px) {
     .course-container {
