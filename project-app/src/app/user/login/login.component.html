@@ -5,10 +5,10 @@
       <form #loginForm="ngForm">
         <div class="input-group">
           <label for="email">Email:</label>
-          <input type="email" id="email" name="email" placeholder="Enter your email" ngModel #emailInput="ngModel" email required>
+          <input type="email" id="email" name="email" placeholder="Enter your email" ngModel #emailInput="ngModel" required>
         </div>
 
-        @if (emailInput.touched) {
+        <!-- @if (emailInput.touched) {
           <div>
             @if(emailInput.errors?.['required']) {
               <div class="error">Email is required!</div>
@@ -18,14 +18,14 @@
               <div class="error">Email is not valid!</div>
             }
           </div>
-        }
+        } -->
   
         <div class="input-group">
           <label for="password">Password:</label>
           <input type="password" id="password" name="password" placeholder="Enter your password" ngModel #passwordInput="ngModel" password required [appMinCount]="minCountNumber">
         </div>
 
-        @if (passwordInput.touched) {
+        <!-- @if (passwordInput.touched) {
           <div>
 
             @if(passwordInput.errors?.['appMinCount']) {
@@ -33,7 +33,7 @@
             }
 
           </div>
-        }
+        } -->
 
         <button type="submit" class="submit-btn">Login</button>
         
