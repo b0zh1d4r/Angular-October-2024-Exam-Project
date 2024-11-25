@@ -1,27 +1,25 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { MinCountDirective } from '../../directives/min-count.directive';
+import { EmailDirective } from '../../directives/email.directive';
+import { DOMAINS } from '../../constants';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [RouterLink, FormsModule, MinCountDirective],
+  imports: [RouterLink, FormsModule, EmailDirective],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  @ViewChild('loginForm') form: NgForm | undefined;
 
-  minCountNumber = 4;
+  domains = DOMAINS;
 
-  formSubmitHandler() {
-    const form = this.form!;
-
-    if (form?.invalid) {
+  login(form: NgForm) {
+    if (form.invalid) {
+      console.error('Invalid login form!');
       return;
     }
-
-    form.reset();
   }
 }
