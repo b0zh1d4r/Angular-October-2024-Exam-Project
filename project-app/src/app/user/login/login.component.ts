@@ -1,24 +1,28 @@
-import { Component } from '@angular/core';
-import { FormsModule, NgForm } from '@angular/forms';
-import { RouterLink } from '@angular/router';
-import { MinCountDirective } from '../../directives/min-count.directive';
-import { EmailDirective } from '../../directives/email.directive';
-import { DOMAINS } from '../../constants';
+import { Component } from "@angular/core";
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
+import { RouterLink } from "@angular/router";
+import { emailValidator } from "../../utils/email.validator";
+import { DOMAINS } from "../../constants";
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [RouterLink, FormsModule, EmailDirective],
+  imports: [RouterLink, ReactiveFormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+  form = new FormGroup({
+    email: new FormControl('', [Validators.required, emailValidator(DOMAINS)]),
+    passGroup: new FormGroup(
+      {
+      password: new FormControl('', [Validators.required, Validators.minLength(4)]),
+      }
+    )
+  });
 
-  domains = DOMAINS;
-
-  login(form: NgForm) {
-    if (form.invalid) {
-      console.error('Invalid login form!');
+  login() {
+    if (this.form.invalid) {
       return;
     }
   }
