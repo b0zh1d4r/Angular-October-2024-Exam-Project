@@ -135,6 +135,23 @@ input {
   background-color: rgb(0, 125, 125);
 }
 
+.btn-red {
+  background-color: #ff0000;
+  margin-right: 10px;
+}
+
+.btn-red:hover {
+  background-color: #b30000;
+}
+
+.btn-green {
+  background-color: #00ff00;
+}
+
+.btn-green:hover {
+  background-color: #00b300;
+}
+
 @media (max-width: 768px) {
   .course-card {
     width: 100%;
