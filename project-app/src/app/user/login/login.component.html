@@ -6,11 +6,7 @@
       <form [formGroup]="form" (ngSubmit)="login()">
         <div class="input-group" [class.invalid]="form.get('email')?.invalid && form.get('email')?.touched" [class.valid]="form.get('email')?.valid && form.get('email')?.touched">
           <label for="email">Email:</label>
-<<<<<<< HEAD
-          <input type="email" id="email" name="email" placeholder="Enter your email" ngModel #emailInput="ngModel" email required [appMinCount]="minCountNumber">
-=======
           <input type="email" id="email" name="email" placeholder="Enter your email" formControlName="email">
->>>>>>> a60d1f9a30721fadc0a5d16c55bc1236c40daff6
         </div>
 
         @if(form.get('email')?.touched) {
