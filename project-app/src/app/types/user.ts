@@ -1,7 +1,21 @@
 export interface User {
+    courses: string[];
     _id: string,
     email: string,
     username: string,
     password: string,
-    __v: number
+    created_at: string;
+    updatedAt: string;
+    __v: number;
 }
+export interface UserForAuth {
+    username: string;
+    email: string;
+    password: string;
+    id: string;
+  }
+  
+  export interface ProfileDetails {
+    username: string;
+    email: string;
+  }

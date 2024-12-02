@@ -14,4 +14,9 @@ courseController.post('/create', async (req, res) => {
     res.json(course);
 });
 
+courseController.get('/:courseId', async (req, res) => {
+    const course = await courseService.getOne(req.params.courseId);
+    res.json(course);
+})
+
 export default courseController;
