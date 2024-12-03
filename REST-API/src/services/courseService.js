@@ -7,9 +7,15 @@ const courseService = {
     getOne(courseId) {
         return Course.findById(courseId);
     },
-    create(courseData) {
-        return Course.create(courseData);
+    create(courseData, userId) {
+        return Course.create({ ...courseData, _ownerId: userId });
     },
+    delete(courseId) {
+        return Course.findByIdAndDelete(courseId);
+    },
+    update(courseId, courseData) {
+        return Course.findByIdAndUpdate(courseId, courseData);
+    }
 
 }
 
