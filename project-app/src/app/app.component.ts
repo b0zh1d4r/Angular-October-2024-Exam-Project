@@ -3,6 +3,8 @@ import { RouterOutlet } from '@angular/router';
 import { NavigationBarComponent } from './core/navigation-bar/navigation-bar.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { HttpClient } from '@angular/common/http';
+import { EditComponent } from "./shared/edit/edit.component";
+import { DetailsComponent } from "./shared/details/details.component";
 // import { LoginComponent } from './auth/login/login.component';
 // import { RegisterComponent } from './auth/register/register.component';
 // import { CatalogComponent } from "./shared/catalog/catalog.component";
@@ -15,17 +17,12 @@ import { HttpClient } from '@angular/common/http';
   selector: 'app-root',
   standalone: true,
   imports: [
-    RouterOutlet, 
+    RouterOutlet,
     NavigationBarComponent,
-    FooterComponent, 
-    // LoginComponent, 
-    // RegisterComponent, 
-    // LatestCourseComponent, 
-    // CatalogComponent, 
-    // SearchComponent, 
-    // AboutComponent, 
-    // DetailsComponent
-  ],
+    FooterComponent,
+    EditComponent,
+    DetailsComponent
+],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
