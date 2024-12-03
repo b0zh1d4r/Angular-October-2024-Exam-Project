@@ -1,9 +1,10 @@
 import { Component } from "@angular/core";
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
-import { RouterLink } from "@angular/router";
+import { Router, RouterLink } from "@angular/router";
 import { emailValidator } from "../../utils/email.validator";
 import { DOMAINS } from "../../constants";
 import { matchPasswordsValidator } from "../../utils/match-passwords.validator";
+import { UserService } from "../user.service";
 
 @Component({
   selector: 'app-register',
@@ -18,8 +19,8 @@ export class RegisterComponent {
     email: new FormControl('', [Validators.required, emailValidator(DOMAINS)]),
     passGroup: new FormGroup(
       {
-      password: new FormControl('', [Validators.required, Validators.minLength(4)]),
-      rePassword: new FormControl('', [Validators.required]),
+        password: new FormControl('', [Validators.required, Validators.minLength(4)]),
+        rePassword: new FormControl('', [Validators.required]),
       },
       {
         validators: [matchPasswordsValidator('password', 'rePassword')],
@@ -27,9 +28,19 @@ export class RegisterComponent {
     )
   });
 
+  constructor(private userService: UserService, private router: Router) {}
+
   register() {
     if (this.form.invalid) {
       return;
     }
+
+    const { username, email, passGroup: { password, rePassword } = {} } = this.form.value;
+    
+    this.userService
+    .register(username!, email!, password!, rePassword!) // They will be there for sure.
+    .subscribe(() => {
+      this.router.navigate(['/home']);
+    });
   }
 }

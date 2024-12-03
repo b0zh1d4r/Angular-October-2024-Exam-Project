@@ -9,5 +9,5 @@ import { RouterLink } from "@angular/router";
     standalone: true,
 })
 export class NavigationBarComponent {
-    isAuthenticated = true;
+    isAuthenticated = false;
 }

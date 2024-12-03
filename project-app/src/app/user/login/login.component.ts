@@ -14,7 +14,6 @@ import { UserService } from "../user.service";
 })
 
 export class LoginComponent {
-  constructor(private userService: UserService, private router: Router) { }
 
   form = new FormGroup({
     email: new FormControl('', [Validators.required, emailValidator(DOMAINS)]),
@@ -25,15 +24,18 @@ export class LoginComponent {
     )
   });
 
+  constructor(private userService: UserService, private router: Router) {}
+
   login() {
     if (this.form.invalid) {
       return;
     }
   
-    const email = this.form.value.email as string;
-    const password = this.form.get('passGroup.password')?.value as string;
-  
-    this.userService.login(email, password).subscribe(() => {
+    const { email, passGroup: { password } = {} } = this.form.value;
+    
+    this.userService
+    .login(email!, password!) // They will be there for sure.
+    .subscribe(() => {
       this.router.navigate(['/home']);
     });
   }
