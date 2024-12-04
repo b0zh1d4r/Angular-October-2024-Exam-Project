@@ -3,6 +3,7 @@ import routes from './routes.js';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import { authMiddleware } from './middlewares/authMiddleware.js';
+import { corsMiddleware } from './middlewares/cors.js';
 
 try {
     await mongoose.connect('mongodb://localhost:27017', { dbName: 'the-window-of-knowledge' });
@@ -15,7 +16,10 @@ try {
 const app = express();
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:4200',
+    credentials: true
+}));
 app.use(authMiddleware);
 // app.use(corsMiddleware);
 app.use(routes);

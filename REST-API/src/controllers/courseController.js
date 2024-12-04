@@ -35,7 +35,7 @@ courseController.put('/:courseId', async (req, res) => {
 
     const updatedData = await courseController.update(courseId, courseData);
 
-    res.json()
+    res.json(updatedData)
 });
 
 export default courseController;

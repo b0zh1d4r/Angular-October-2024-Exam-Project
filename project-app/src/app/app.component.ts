@@ -21,7 +21,7 @@ import { DetailsComponent } from "./shared/details/details.component";
     NavigationBarComponent,
     FooterComponent,
     EditComponent,
-    DetailsComponent
+    DetailsComponent,
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
