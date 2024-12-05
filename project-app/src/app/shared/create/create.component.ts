@@ -22,9 +22,7 @@ export class CreateComponent {
   constructor(private apiService: ApiService, private router: Router) { }
 
   createCourse() {
-    
     if (this.form.invalid) {
-      console.log(this.form);
       return;
     }
 

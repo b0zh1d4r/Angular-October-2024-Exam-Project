@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../api.service';
+import { Course } from '../../types/course';
 
 @Component({
   selector: 'app-catalog',
@@ -9,11 +10,12 @@ import { ApiService } from '../../api.service';
   styleUrl: './catalog.component.css'
 })
 export class CatalogComponent implements OnInit {
+  courses: Course[] = [];
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void   {
     this.apiService.getCourses().subscribe((courses) => {
-      console.log(courses);
+      this.courses = courses;
     });
   }
 }

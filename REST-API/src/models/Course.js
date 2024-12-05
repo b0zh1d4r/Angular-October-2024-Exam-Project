@@ -32,7 +32,7 @@ const courseSchema = new Schema({
       ref: "User",
     },
   ],
-  owner: {
+  _ownerId: {
     type: Types.ObjectId,
     ref: "User",
   },

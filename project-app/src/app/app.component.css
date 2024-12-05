@@ -8,8 +8,8 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Full viewport height */
-    margin: 0; /* Remove default margin on the heading */
+    height: 100vh;
+    margin: 0;
     text-align: center;
     text-shadow: 4px 4px #000000;
 }
