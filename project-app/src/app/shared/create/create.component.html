@@ -1,34 +1,35 @@
 <div class="auth-container">
-    <div class="form-box">
-      <h2>Create a New Course</h2>
-      <form class="course-form">
-        <div class="input-group">
-          <label for="courseTitle">Course Title:</label>
-          <input type="text" id="courseTitle" placeholder="Enter course title" />
-        </div>
-  
-        <div class="input-group">
-          <label for="startDate">Start Date:</label>
-          <input type="date" id="startDate" />
-        </div>
-  
-        <div class="input-group">
-          <label for="price">Price (USD):</label>
-          <input type="number" id="price" placeholder="Enter price" />
-        </div>
-  
-        <div class="input-group">
-          <label for="imageUrl">Image URL:</label>
-          <input type="text" id="imageUrl" placeholder="Enter image URL" />
-        </div>
-  
-        <div class="input-group">
-          <label for="description">Course Description:</label>
-          <textarea id="description" placeholder="Enter course description"></textarea>
-        </div>
-  
-        <button type="submit" class="submit-btn">Create Course</button>
-      </form>
-    </div>
+  <div class="form-box">
+    <h2>Create a New Course</h2>
+    <form [formGroup]="form" (ngSubmit)="createCourse()" class="course-form">
+      <div class="input-group">
+        <label for="courseTitle">Course Title:</label>
+        <input type="text" id="courseTitle" placeholder="Enter course title" formControlName="courseTitle">
+      </div>
+
+      <div class="input-group">
+        <label for="startDate">Start Date:</label>
+        <input type="date" id="startDate" formControlName="startDate" />
+      </div>
+
+      <div class="input-group">
+        <label for="price">Price (USD):</label>
+        <input type="number" id="price" placeholder="Enter price" formControlName="price" />
+      </div>
+
+      <div class="input-group">
+        <label for="imageUrl">Image URL:</label>
+        <input type="text" id="imageUrl" placeholder="Enter image URL" formControlName="imageUrl" />
+      </div>
+
+      <div class="input-group">
+        <label for="description">Course Description:</label>
+        <textarea id="description" placeholder="Enter course description" formControlName="description"></textarea>
+      </div>
+
+      <button class="submit-btn">
+        Create Course
+      </button>
+    </form>
   </div>
-  
+</div>

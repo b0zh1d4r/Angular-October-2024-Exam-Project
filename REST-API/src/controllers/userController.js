@@ -6,23 +6,34 @@ const userController = Router();
 userController.post('/register', async (req, res) => {
     const { username, email, password } = req.body;
 
-    const result = await userService.register(username, email, password);
-
-    res.cookie('auth-cookie', result, { httpOnly: true }).end();
+    try {
+        const result = await userService.register(username, email, password);
+        res.cookie('auth-cookie', result, { httpOnly: true });
+        res.status(201).json({ message: 'User registered successfully!', token: result });
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
 });
 
 userController.post('/login', async (req, res) => {
     const { email, password } = req.body;
 
-    const result = await userService.login(email, password);
-
-    res.cookie('auth-cookie', result, { httpOnly: true }).end();
+    try {
+        const result = await userService.login(email, password);
+        res.cookie('auth-cookie', result, { httpOnly: true });
+        res.status(200).send(result._id).json({ message: 'Login is successful!', token: result });
+    } catch (error) {
+        res.status(401).json({ error: error.message });
+    }
 });
 
-userController.get('/logout', async (req, res) => {
-    await userService.logout();
-
-    res.status(204).end();
+userController.post('/logout', async (req, res) => {
+    try {
+        res.clearCookie('auth-cookie');
+        res.status(200).json({ message: 'Logout successful' });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 });
 
 export default userController;

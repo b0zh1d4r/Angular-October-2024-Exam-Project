@@ -28,18 +28,14 @@ const userService = {
         }
 
         return generateResponse(user);
-    },
-    logout() {
-            
-        return true;
     }
-}
+}  
 
 function generateResponse(user) {
     const payload = {
         _id: user._id,
         username: user.username,
-        email: user.email
+        email: user.email,
     }
 
     const token = jwt.sign(payload, 'MYSECRET', { expiresIn: '2h' });

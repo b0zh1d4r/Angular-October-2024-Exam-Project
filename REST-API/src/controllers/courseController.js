@@ -10,11 +10,20 @@ courseController.get('/courses', async (req, res) => {
 });
 
 courseController.post('/create', async (req, res) => {
-    const userId = req.user._id;
+
+    try {
+    const userId = req.user_id;
+    console.log(userId);
+    
     const courseData = req.body;
     const course = await courseService.create(courseData, userId);
     
-    res.json(course);
+    res.json(course).status(200);
+    } catch (error) {
+        console.log(error);
+        return res.status(500).send(error);
+    }
+
 });
 
 courseController.get('/:courseId', async (req, res) => {
