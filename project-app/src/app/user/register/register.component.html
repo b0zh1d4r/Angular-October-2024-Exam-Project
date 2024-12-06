@@ -1,7 +1,7 @@
 <div class="auth-container">
   <div class="form-box">
     <h2>Register</h2>
-    <form method="post" [formGroup]="form" (ngSubmit)="register()">
+    <form [formGroup]="form" (ngSubmit)="register()">
       <div class="input-group" [class.invalid]="form.get('username')?.invalid && form.get('username')?.touched" [class.valid]="form.get('username')?.valid && form.get('username')?.touched">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" placeholder="Choose a username" formControlName="username">
@@ -64,7 +64,7 @@
         }
       </div>
 
-      <button type="submit" class="submit-btn" [disabled]="form.invalid" [style]="{backgroundColor: form.invalid ? '#007d7d' : '#00ffff'}">Register</button>
+      <button type="submit" class="submit-btn" [disabled]="form.invalid" [style]="{backgroundColor: form.invalid ? '#007d7d' : '#00ffff'}" (click)="register()">Register</button>
 
       <div class="login-link">
         <p>Already have an account? <a routerLink="/login">Login here</a></p>

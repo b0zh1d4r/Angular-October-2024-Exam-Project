@@ -3,7 +3,7 @@
       <h2>Login</h2>
 
 
-      <form method="post" [formGroup]="form" (ngSubmit)="login()">
+      <form [formGroup]="form" (ngSubmit)="login()">
         <div class="input-group" [class.invalid]="form.get('email')?.invalid && form.get('email')?.touched" [class.valid]="form.get('email')?.valid && form.get('email')?.touched">
           <label for="email">Email:</label>
           <input type="email" id="email" name="email" placeholder="Enter your email" formControlName="email">
@@ -39,7 +39,7 @@
 
         </div>
 
-        <button type="submit" class="submit-btn" [disabled]="form.invalid" [style]="{backgroundColor: form.invalid ? '#007d7d' : '#00ffff'}">Login</button>
+        <button type="submit" class="submit-btn" [disabled]="form.invalid" [style]="{backgroundColor: form.invalid ? '#007d7d' : '#00ffff'}" (click)="login()">Login</button>
         
         <div class="register-link">
           <p>Don't have an account? <a routerLink="/register">Register here</a></p>
