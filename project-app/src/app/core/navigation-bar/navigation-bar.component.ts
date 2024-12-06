@@ -10,7 +10,7 @@ import { UserService } from "../../user/user.service";
     standalone: true,
 })
 export class NavigationBarComponent {
-    get isLoggedIn(): boolean {  
+    get isLoggedIn(): boolean {          
         return this.userService.isLogged;
     }
 

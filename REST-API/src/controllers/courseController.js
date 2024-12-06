@@ -11,7 +11,6 @@ courseController.get("/courses", async (req, res) => {
 courseController.post("/create", async (req, res) => {
   try {
     const userId = await req.cookies.auth.user._id;
-    console.log(req.body);
 
     const courseData = {
       ...req.body,
@@ -21,7 +20,6 @@ courseController.post("/create", async (req, res) => {
     const course = await courseService.create(courseData, userId);
     res.json(course).status(200);
   } catch (error) {
-    console.log(error);
     return res.status(500).send(error);
   }
 });
