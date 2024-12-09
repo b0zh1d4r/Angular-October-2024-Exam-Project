@@ -1,5 +1,6 @@
 import { Router } from "express";
 import courseService from "../services/courseService.js";
+import { getErrorMessage } from "../utils/errorUtils.js";
 
 const courseController = Router();
 
@@ -19,25 +20,26 @@ courseController.post("/create", async (req, res) => {
 
     const course = await courseService.create(courseData, userId);
     res.json(course).status(200);
-  } catch (error) {
-    return res.status(500).send(error);
+  } catch (err) {
+    const error = getErrorMessage(err);
+    res.status(500).json({ message: error });
   }
 });
 
-courseController.get("/:courseId", async (req, res) => {
+courseController.get("/courses/:courseId", async (req, res) => {
   const course = await courseService.getOne(req.params.courseId);
   res.json(course);
 });
 
-courseController.delete("/:courseId", async (req, res) => {
-  await courseController.delete(req.params.courseId);
+courseController.delete("/courses/:courseId/delete", async (req, res) => {
+  await courseService.delete(req.params.courseId);
   res.status(204).end();
 });
 
-courseController.put("/:courseId", async (req, res) => {
+courseController.put("/courses/:courseId/edit", async (req, res) => {
   const courseData = req.body;
   const courseId = req.params.courseId;
-
+  
   const updatedData = await courseController.update(courseId, courseData);
   res.json(updatedData);
 });

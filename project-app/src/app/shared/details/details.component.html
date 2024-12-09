@@ -1,14 +1,16 @@
 <div class="course-details-container">
     <h1>Course Details</h1>
     <div class="course-detail-card">
-      <img src="https://study.com/cimages/course-image/history-301-historiography-historical-methods_699413_large.jpeg" alt="History" class="course-detail-img">
+      <img src="{{course.imageUrl}}" alt="History" class="course-detail-img">
       <div class="course-info">
-        <h2 class="course-title">History</h2>
-        <p class="course-description">This course offers an overview of the key events, ideas, and developments that have shaped human history from ancient civilizations to the present.</p>
-        <p class="course-start-date">Start Date: November 18, 2024</p>
-        <p class="course-price">Price: $29.99</p>
-        <p class="course-signed-count">Signed students: 150</p>
-        <a href="#" class="btn sign-btn">Sign Now</a>
+        <h2 class="course-title">{{course.title}}</h2>
+        <p class="course-description">{{course.description}}</p>
+        <p class="course-start-date">Start Date: {{course.startDate}}</p>
+        <p class="course-price">Price: ${{course.price}}</p>
+        <p class="course-signed-count">Signed students: {{course.signedCount || 0}}</p>
+        <div class="btn sign-btn" routerLink="/courses/{{course._id}}/edit">Edit</div>
+        <div class="btn sign-btn" routerLink="/courses/{{course._id}}/delete" (click)="deleteCourse()">Delete</div>
+        <div class="btn sign-btn" routerLink="/">Sign</div>
       </div>
     </div>
   </div>

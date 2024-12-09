@@ -7,7 +7,7 @@ import { appInterceptor } from './app.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideHttpClient(withInterceptors([appInterceptor])),
+    provideHttpClient(  withInterceptors([appInterceptor])),
     provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes)
   ]
 };

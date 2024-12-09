@@ -1,7 +1,7 @@
 <body>
     <div class="main-title">
         <h1>Welcome to The Window of Knowledge!</h1>
-        <h1>Our Latest Courses:</h1>
+        <h2>Our Latest Courses:</h2>
     </div>
 
     <div class="course-container">
@@ -20,7 +20,7 @@
                         <p class="course-description">
                             {{course.description}}
                         </p>
-                        <div class="btn details-btn">Details</div>
+                        <div class="btn details-btn" routerLink="/courses/{{course._id}}">Details</div>
                     </div>
                 </div>
             }

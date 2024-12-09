@@ -1,6 +1,7 @@
 import { User } from "./user";
 
 export interface Course {
+    _id: string,
     title: string,
     description: string,
     imageUrl: string,  
@@ -8,5 +9,5 @@ export interface Course {
     price: number,
     signedCount: number,
     owner: User,
-    __v: number
+    __v: number,
 }

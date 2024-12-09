@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { Course } from '../../types/course';
 import { ApiService } from '../../api.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-latest-courses',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './latest-courses.component.html',
   styleUrls: ['./latest-courses.component.css']
 })

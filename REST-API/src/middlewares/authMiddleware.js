@@ -7,7 +7,6 @@ export const authMiddleware = (req, res, next) => {
         return next();
     }
 
-    
     try {
         const decodedToken = jwt.verify(token, 'MYSECRET');
         

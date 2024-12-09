@@ -1,33 +1,88 @@
 <div class="auth-container">
     <div class="form-box">
       <h2>Edit</h2>
-      <form class="course-form">
+      <form [formGroup]="form" (ngSubmit)="editCourse()" class="course-form">
         <div class="input-group">
           <label for="courseTitle">Course Title:</label>
-          <input type="text" id="courseTitle" placeholder="Update course title" />
+          <input type="text" id="courseTitle" placeholder="Update course title" formControlName="courseTitle" value="{{course.title}}">
         </div>
+
+        @if(form.get('courseTitle')?.touched) {
+          <div>
+            @if(form.get('courseTitle')?.errors?.['required']) {
+              <div class="error">Course title is required!</div>
+            }
+            @if(form.get('courseTitle')?.errors?.['minlength']) {
+              <div class="error">Course title must be at least 2 characters!</div>
+            }
+          </div>
+        }
   
         <div class="input-group">
           <label for="startDate">Start Date:</label>
-          <input type="date" id="startDate" />
+          <input type="date" id="startDate" formControlName="startDate" value="{{course.startDate}}"/>
         </div>
+
+        @if(form.get('startDate')?.touched) {
+          <div>
+            @if(form.get('startDate')?.errors?.['required']) {
+              <div class="error">Start date is required!</div>
+            }
+          </div>
+        }
   
         <div class="input-group">
           <label for="price">Price (USD):</label>
-          <input type="number" id="price" placeholder="Update price" />
+          <input type="number" id="price" placeholder="Update price" formControlName="price" value="{{course.price}}"/>
         </div>
+
+        @if(form.get('price')?.touched) {
+          <div>
+            @if(form.get('price')?.errors?.['required']) {
+              <div class="error">Price is required!</div>
+            }
+  
+            @if(form.get('price')?.errors?.['min']) {
+              <div class="error">Price must be at least 0$!</div>
+            }
+          </div>
+        }
   
         <div class="input-group">
           <label for="imageUrl">Image URL:</label>
-          <input type="text" id="imageUrl" placeholder="Update image URL" />
+          <input type="text" id="imageUrl" placeholder="Update image URL" formControlName="imageUrl" value=" {{course.imageUrl}}"/>
         </div>
+
+        @if(form.get('imageUrl')?.touched) {
+          <div>
+            @if(form.get('imageUrl')?.errors?.['required']) {
+              <div class="error">Image is required!</div>
+            }
+          </div>
+        }
   
         <div class="input-group">
           <label for="description">Course Description:</label>
-          <textarea id="description" placeholder="Update course description"></textarea>
+          <textarea id="description" placeholder="Update course description" formControlName="description" value="{{course.description}}"></textarea>
         </div>
+
+        @if(form.get('description')?.touched) {
+          <div>
+            @if(form.get('description')?.errors?.['required']) {
+              <div class="error">Description is required!</div>
+            }
   
-        <button type="submit" class="submit-btn">Save Changes</button>
+            @if(form.get('description')?.errors?.['minLength']) {
+              <div class="error">Description must be at least 10 characters long!</div>
+            }
+  
+            @if(form.get('description')?.errors?.['maxLength']) {
+              <div class="error">Description must be no longer than 100 characters!</div>
+            }
+          </div>
+        }
+  
+        <button type="submit" class="submit-btn" >Save Changes</button>
         <button type="button" class="cancel-btn">Cancel</button>
       </form>
     </div>

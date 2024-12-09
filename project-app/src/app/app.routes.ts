@@ -9,12 +9,16 @@ import { CatalogComponent } from './main/catalog/catalog.component';
 import { AuthGuard } from './user/users.guard';
 import { ProfileComponent } from './user/profile/profile.component';
 import { CreateComponent } from './shared/create/create.component';
+import { DetailsComponent } from './shared/details/details.component';
+import { EditComponent } from './shared/edit/edit.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'home', component: LatestCourseComponent },
     { path: 'search', component: SearchComponent },
     { path: 'courses', component: CatalogComponent },
+    { path: 'courses/:courseId', component: DetailsComponent },
+    { path: 'courses/:courseId/edit', component: EditComponent },
     { path: 'about', component: AboutComponent },
     { path: 'create', component: CreateComponent, canActivate: [AuthGuard] },
     { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
