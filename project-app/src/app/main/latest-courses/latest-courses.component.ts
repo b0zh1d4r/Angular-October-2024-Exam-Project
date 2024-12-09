@@ -16,7 +16,6 @@ export class LatestCourseComponent {
 
   ngOnInit(): void {
     this.apiService.getCourses().subscribe((courses) => {
-      // Assuming courses are already sorted by date (latest first).
       for (let i = courses.length - 1; i >= courses.length - 3 && i >= 0; i--) {
         if (courses[i] === undefined) {
           return;

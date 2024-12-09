@@ -56,6 +56,36 @@ body {
     text-shadow: 2px 2px #000000;
 }
 
+.no-courses-message {
+    color: #ff6b6b;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff3f3;
+    border: 1px solid #ffa7a7;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .no-courses-message {
+    text-align: center;
+    padding: 2rem;
+    color: #555;
+  }
+  
+  .no-courses-message h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .no-courses-message p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+
 .course-card {
     background-color: #fff;
     border-radius: 10px;
@@ -119,19 +149,6 @@ body {
     font-family: "Madimi One", sans-serif;
     font-weight: 400;
     font-style: normal;
-}
-
-.no-courses-message {
-    color: #ff6b6b;
-    font-size: 30px;
-    font-weight: bold;
-    text-align: center;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff3f3;
-    border: 1px solid #ffa7a7;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 

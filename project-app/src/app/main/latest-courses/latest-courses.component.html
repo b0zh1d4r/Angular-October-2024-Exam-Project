@@ -1,22 +1,29 @@
 <body>
     <div class="main-title">
         <h1>Welcome to The Window of Knowledge!</h1>
+        <h1>Our Latest Courses:</h1>
     </div>
 
     <div class="course-container">
-        <h1>Our Latest Courses:</h1>
-        @for (course of latestCourses; track $index) {
-            <div class="course-card">
-                <img src="{{course.imageUrl}}"
-                    alt="{{course.title}}" class="course-img">
-                <div class="course-details">
-                    <h3 class="course-title">{{course.title}}</h3>
-                    <p class="course-description">
-                        {{course.description}}
-                    </p>
-                    <div class="btn details-btn">Details</div>
-                </div>
+        @if (latestCourses.length === 0) {
+            <div class="no-courses-message">
+                <h2>No Courses Available</h2>
+                <p>We are constantly working to bring you new and exciting courses. Please check back soon!</p>
             </div>
+        } @else {
+            @for (course of latestCourses; track $index) {
+                <div class="course-card">
+                    <img src="{{course.imageUrl}}"
+                        alt="{{course.title}}" class="course-img">
+                    <div class="course-details">
+                        <h3 class="course-title">{{course.title}}</h3>
+                        <p class="course-description">
+                            {{course.description}}
+                        </p>
+                        <div class="btn details-btn">Details</div>
+                    </div>
+                </div>
+            }
         }
     </div>
 </body>
