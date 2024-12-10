@@ -1,24 +1,28 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Router, RouterLink } from "@angular/router";
+import { UserForAuth } from "../../types/user";
 import { UserService } from "../../user/user.service";
 
 @Component({
-    selector: 'app-navigation-bar',
-    imports: [RouterLink],
-    templateUrl: './navigation-bar.component.html',
-    styleUrl: './navigation-bar.component.css',
-    standalone: true,
+  selector: 'app-navigation-bar',
+  imports: [RouterLink],
+  templateUrl: './navigation-bar.component.html',
+  styleUrls: ['./navigation-bar.component.css'],
+  standalone: true,
 })
-export class NavigationBarComponent {
-    get isLoggedIn(): boolean {          
-        return this.userService.isLogged;
-    }
+export class NavigationBarComponent implements OnInit {
+  loggedInUser: UserForAuth | null = null;
 
-    constructor(private userService: UserService, private router: Router) {};
+  constructor(private userService: UserService, private router: Router) {}
 
-    logout() {
-        this.userService.logout().subscribe(() => {
-            this.router.navigate(['/login']);
-        });
-    }
+  ngOnInit(): void {
+    this.loggedInUser = this.userService.getUser();
+  }
+
+  logout(): void {
+    this.userService.logout().subscribe(() => {
+      this.loggedInUser = null; // Reset the user state
+      this.router.navigate(['/login']);
+    });
+  }
 }

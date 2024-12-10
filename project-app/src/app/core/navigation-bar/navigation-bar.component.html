@@ -3,7 +3,7 @@
         <!-- <div class="nav-btn" routerLink="/search">Search</div> -->
     <div class="nav-btn" routerLink="/courses">Courses</div>
     <div class="nav-btn" routerLink="/about">About</div>
-    @if (isLoggedIn) {
+    @if (loggedInUser) {
         <div class="nav-btn" routerLink="/create">Create Course</div>
         <div class="nav-btn" routerLink="/profile">Profile</div>
         <div class="nav-btn" (click)="logout()">Logout</div>
