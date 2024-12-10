@@ -22,7 +22,7 @@ const courseSchema = new Schema({
     validate: /^https?:\/\//,
   },
   price: {
-    type: Number,
+    type: String,
     required: [true, "Price is required!"],
     min: 0,
   },

@@ -15,7 +15,7 @@ courseController.post("/create", async (req, res) => {
 
     const courseData = {
       ...req.body,
-      ownerId: userId
+      ownerId: userId,
     };
 
     const course = await courseService.create(courseData, userId);
@@ -36,11 +36,11 @@ courseController.delete("/courses/:courseId/delete", async (req, res) => {
   res.status(204).end();
 });
 
-courseController.put("/courses/:courseId/edit", async (req, res) => {
+courseController.put("/courses/:courseId", async (req, res) => {
   const courseData = req.body;
   const courseId = req.params.courseId;
-  
-  const updatedData = await courseController.update(courseId, courseData);
+
+  const updatedData = await courseService.update(courseId, courseData);
   res.json(updatedData);
 });
 
