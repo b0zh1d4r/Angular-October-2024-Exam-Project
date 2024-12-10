@@ -1,60 +1,13 @@
 <div class="profile-container">
-    <h1 class="profile-title">Profile Information</h1>
+    <h1 class="profile-title">{{user?.username}}'s Profile Information:</h1>
   
     <div class="profile-card">
-      <!-- READONLY MODE -->
-      @if(!isEditMode) {
       <ng-container>
         <div class="profile-info">
-          <p class="info-item"><strong>Username:</strong> John</p>
-          <p class="info-item"><strong>Email:</strong> john.doe&#64;example.com</p>
+          <p class="info-item"><strong>Username:</strong> {{user?.username}}</p>
+          <p class="info-item"><strong>Email:</strong> {{user?.email}}</p>
         </div>
-        <div class="btn" (click)="toggleEditMode()">Edit</div>
       </ng-container>
-      }
-  
-      <!-- EDIT MODE -->
-      @if(isEditMode) {
-      <ng-container>
-        <form formGroupName="editForm">
-          <div class="input-group">
-            <label for="editUsername">Username:</label>
-            <input type="text" id="editUsername" formControlName="username">
-          </div>
-          <div class="input-group">
-            <label for="editEmail">Email:</label>
-            <input type="email" id="editEmail" formControlName="email">
-          </div>
-          <div class="btn btn-red" (click)="toggleEditMode()">Cancel</div>
-          <div class="btn btn-green" (click)="saveChanges()">Save</div>
-        </form>
-      </ng-container>
-      }
-    </div>
-  
-    <h2 class="courses-header">User's Signed Out Courses Overview</h2>
-    <div class="course-container">
-      <div class="course-card">
-        <img src="https://study.com/cimages/course-image/history-301-historiography-historical-methods_699413_large.jpeg" alt="Course Image" class="course-img" />
-        <div class="course-details">
-          <h3 class="course-title">History</h3>
-          <p class="course-description">
-            This course offers an overview of the key events, ideas, and developments that have shaped human history from ancient civilizations to the present.
-          </p>
-          <div class="btn">View Course</div>
-        </div>
-      </div>
-      <div class="course-card">
-        <img src="https://bonnevilleacademy.org/storage/2023/04/Why-Math-Is-Important-for-Kids-1024x683.jpeg" alt="Course Image" class="course-img" />
-        <div class="course-details">
-          <h3 class="course-title">Math</h3>
-          <p class="course-description">
-            This course provides a comprehensive introduction to fundamental mathematical concepts, including algebra, geometry, statistics, and basic calculus.
-          </p>
-          <div class="btn">View Course</div>
-        </div>
-      </div>
-      <!-- Add more course cards as needed -->
     </div>
   </div>
   

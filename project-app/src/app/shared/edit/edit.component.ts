@@ -39,7 +39,7 @@ export class EditComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private apiService: ApiService,
-    private router: Router // Inject Router
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -63,8 +63,6 @@ export class EditComponent implements OnInit {
       return;
     }
 
-    //const id = this.route.snapshot.params['courseId'];
-
     const { courseTitle, description, startDate, imageUrl, price } =
       this.form.value;
     this.apiService
@@ -77,7 +75,7 @@ export class EditComponent implements OnInit {
         description!
       )
       .subscribe(() => {
-        this.router.navigate([`/courses/${this.id}`]); // Navigate to another page after deletion
+        this.router.navigate([`/courses/${this.id}`]);
       });
   }
 }

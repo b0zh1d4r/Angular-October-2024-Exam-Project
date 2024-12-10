@@ -18,7 +18,7 @@ export const routes: Routes = [
     { path: 'search', component: SearchComponent },
     { path: 'courses', component: CatalogComponent },
     { path: 'courses/:courseId', component: DetailsComponent },
-    { path: 'courses/:courseId/edit', component: EditComponent },
+    { path: 'courses/:courseId/edit', component: EditComponent, canActivate: [AuthGuard] },
     { path: 'about', component: AboutComponent },
     { path: 'create', component: CreateComponent, canActivate: [AuthGuard] },
     { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},

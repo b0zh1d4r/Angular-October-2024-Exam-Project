@@ -1,27 +1,26 @@
-import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { UserService } from '../user.service';
+import { UserForAuth as User } from '../../types/user'; // Use the correct interface
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent {
-  isEditMode = false;
+export class ProfileComponent implements OnInit {
+  user: User | null = null;
 
-  editForm = new FormGroup({
-    username: new FormControl('John', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
-    email: new FormControl('john.doe@example.com', [Validators.required, Validators.email])
-  });
+  constructor(private userService: UserService) {}
 
-  toggleEditMode() {
-    this.isEditMode = !this.isEditMode;
+  ngOnInit(): void {
+    this.loadUserProfile();
   }
 
-  saveChanges() {
-    if (this.editForm.valid) {
-      console.log('Form data:', this.editForm.value);
-      this.toggleEditMode();
-    }
+  loadUserProfile(): void {
+    const user = this.userService.getUser();
+    this.user = user;
+
+    console.log(this.user);
+    
   }
 }

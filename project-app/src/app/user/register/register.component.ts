@@ -5,11 +5,13 @@ import { emailValidator } from "../../utils/email.validator";
 import { DOMAINS } from "../../constants";
 import { matchPasswordsValidator } from "../../utils/match-passwords.validator";
 import { UserService } from "../user.service";
+import { ErrorMsgService } from "../../core/error-msg/error-msg.service";
+import { ErrorMsgComponent } from "../../core/error-msg/error-msg.component";
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [RouterLink, ReactiveFormsModule],
+  imports: [RouterLink, ReactiveFormsModule, ErrorMsgComponent],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
@@ -28,7 +30,13 @@ export class RegisterComponent {
     )
   });
 
-  constructor(private userService: UserService, private router: Router) {}
+  hasError: boolean = false;
+
+  constructor(private userService: UserService, private router: Router, private errorService: ErrorMsgService) {
+    this.errorService.apiError$.subscribe((error) => {
+      this.hasError = !!error;
+    })
+  }
 
   register() {
     if (this.form.invalid) {
@@ -36,11 +44,17 @@ export class RegisterComponent {
     }
 
     const { username, email, passGroup: { password, rePassword } = {} } = this.form.value;
-    
+
     this.userService
-    .register(username!, email!, password!, rePassword!) // They will be there for sure.
-    .subscribe(() => {
-      this.router.navigate(['/home']);
-    });
+      .register(username!, email!, password!, rePassword!) // They will be there for sure.
+      .subscribe({
+        next: () => {
+          this.hasError = false;
+          this.errorService.clearError()
+          this.router.navigate(['/home']);
+    }, error: () => {
+      this.hasError = true;
+    }
+      });
   }
 }

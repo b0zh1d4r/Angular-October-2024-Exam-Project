@@ -1,3 +1,5 @@
+import { Course } from "./course";
+
 export interface User {
     courses: string[];
     _id: string,
@@ -12,10 +14,13 @@ export interface UserForAuth {
     username: string;
     email: string;
     password: string;
-    id: string;
+    _id: string;
+    courses: Course[];
   }
   
   export interface ProfileDetails {
     username: string;
     email: string;
+    _id: string;
+    courses: Course[];
   }

@@ -5,13 +5,18 @@ import { getErrorMessage } from "../utils/errorUtils.js";
 const courseController = Router();
 
 courseController.get("/courses", async (req, res) => {
-  const courses = await courseService.getAll();
-  res.json(courses);
+  try {
+    const courses = await courseService.getAll();
+    res.json(courses);
+  } catch (err) {
+    const error = getErrorMessage(err);
+    res.status(500).json({ message: error });
+  }
 });
 
 courseController.post("/create", async (req, res) => {
   try {
-    const userId = await req.cookies.auth.user._id;
+    const userId = req.cookies.auth.user._id;
 
     const courseData = {
       ...req.body,
@@ -19,7 +24,7 @@ courseController.post("/create", async (req, res) => {
     };
 
     const course = await courseService.create(courseData, userId);
-    res.json(course).status(200);
+    res.status(201).json(course); // Changed to 201 for successful creation
   } catch (err) {
     const error = getErrorMessage(err);
     res.status(500).json({ message: error });
@@ -27,21 +32,52 @@ courseController.post("/create", async (req, res) => {
 });
 
 courseController.get("/courses/:courseId", async (req, res) => {
-  const course = await courseService.getOne(req.params.courseId);
-  res.json(course);
+  try {
+    const course = await courseService.getOne(req.params.courseId);
+    res.json(course);
+  } catch (err) {
+    const error = getErrorMessage(err);
+    res.status(500).json({ message: error });
+  }
 });
 
 courseController.delete("/courses/:courseId/delete", async (req, res) => {
-  await courseService.delete(req.params.courseId);
-  res.status(204).end();
+  try {
+    await courseService.delete(req.params.courseId);
+    res.status(204).end();
+  } catch (err) {
+    const error = getErrorMessage(err);
+    res.status(500).json({ message: error });
+  }
 });
 
 courseController.put("/courses/:courseId", async (req, res) => {
-  const courseData = req.body;
-  const courseId = req.params.courseId;
+  try {
+    const courseData = req.body;
+    const courseId = req.params.courseId;
 
-  const updatedData = await courseService.update(courseId, courseData);
-  res.json(updatedData);
+    const updatedData = await courseService.update(courseId, courseData);
+    res.json(updatedData);
+  } catch (err) {
+    const error = getErrorMessage(err);
+    res.status(500).json({ message: error });
+  }
+});
+
+courseController.put('/courses/:courseId/sign', async (req, res) => {
+  const courseId = req.params.courseId;
+  const userId = req.cookies.auth.user._id;
+
+  console.log(courseId, userId);
+  
+  try {
+    const course = await courseService.sign(courseId, userId);
+
+    res.status(200).json(course).end();
+  } catch (err) {
+    const error = getErrorMessage(err);
+    res.status(500).json({ message: error });
+  }
 });
 
 export default courseController;

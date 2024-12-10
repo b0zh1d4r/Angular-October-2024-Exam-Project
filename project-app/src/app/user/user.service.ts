@@ -18,12 +18,6 @@ export class UserService implements OnDestroy {
     return !!this.user;
   }
 
-  // constructor(private http: HttpClient) {
-  //   this.userSubscription = this.user$.subscribe((user) => {
-  //     this.user = user;
-  //   });
-  // }
-
   constructor(private http: HttpClient) {
     this.user$.subscribe((user) => {
       this.user = user;
@@ -55,7 +49,7 @@ export class UserService implements OnDestroy {
   logout() {
     return this.http
       .post('/api/logout', {})
-      .pipe(tap((user) => this.user$$.next(null)));
+      .pipe(tap(() => this.user$$.next(null)));
   }
 
   getProfile() {
@@ -64,13 +58,16 @@ export class UserService implements OnDestroy {
       .pipe(tap((user) => this.user$$.next(user)));
   }
 
-  updateProfile(username: string, email: string) {
-    return this.http
-      .put<UserForAuth>(`/api/profile`, {
-        username,
-        email,
-      })
-      .pipe(tap((user) => this.user$$.next(user)));
+  isOwner(ownerId: string): boolean { 
+    return this.user?._id === ownerId;
+  }
+
+  getUserId(): string | null {
+    return this.user?._id || null;
+  }
+
+  getUser(): UserForAuth | null {
+    return this.user;
   }
 
   ngOnDestroy(): void {

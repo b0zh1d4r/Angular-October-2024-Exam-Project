@@ -15,7 +15,10 @@ const courseService = {
     },
     update(courseId, courseData) {
         return Course.findByIdAndUpdate(courseId, courseData);
-    }
+    },
+    sign(courseId, userId) {
+        return Course.findByIdAndUpdate(courseId, { $addToSet: { signedOut: userId, new: true } });
+    },
 
 }
 

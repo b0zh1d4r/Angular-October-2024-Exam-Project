@@ -71,7 +71,7 @@ textarea {
 button.submit-btn {
   width: 100%;
   padding: 10px;
-  background-color: green;
+  background-color: rgb(0, 128, 0);
   color: white;
   border: none;
   border-radius: 4px;
@@ -83,8 +83,17 @@ button.submit-btn {
 }
 
 button.submit-btn:hover {
-  background-color: darkgreen;
+  background-color: rgb(0, 100, 0);
 }
+
+.input-group.invalid input {
+  border-color: #ff0000;
+}
+
+.input-group.valid input {
+  border-color: #00ff00;
+}
+
 
 button.cancel-btn {
   width: 100%;

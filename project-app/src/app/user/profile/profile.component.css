@@ -10,10 +10,10 @@ body {
 }
 
 .profile-container {
-  max-width: 1200px;
+  max-width: 600px;
   font-family: "Madimi One", sans-serif;
   font-weight: 400;
-  margin: 30px auto;
+  margin: 300px auto;
   padding: 20px;
   text-align: center;
   background-color: rgba(0, 0, 0, 0.5);

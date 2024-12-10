@@ -1,5 +1,3 @@
-import { User } from './user';
-
 export interface Course {
   _id: string;
   title: string;
@@ -7,7 +5,7 @@ export interface Course {
   imageUrl: string;
   startDate: string;
   price: string;
-  signedCount: number;
-  owner: User;
+  signedOut: string[];
+  _ownerId: string;
   __v: number;
 }
