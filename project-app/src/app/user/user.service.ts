@@ -20,6 +20,10 @@ export class UserService implements OnDestroy {
     });
   }
 
+  get isLogged(): boolean {
+    return !!this.user;
+  }
+
   login(email: string, password: string) {
     return this.http
       .post<UserForAuth>('/api/login', { email, password })
