@@ -29,7 +29,7 @@ userController.post("/login", async (req, res) => {
       .send(result.user)
       .end();
   } catch (error) {
-    res.status(401).json({ error: error.message });
+    res.status(401).json({ message: error.message });
   }
 });
 
