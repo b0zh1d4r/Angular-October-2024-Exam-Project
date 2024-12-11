@@ -10,18 +10,11 @@ import { UserService } from '../../user/user.service';
   standalone: true,
 })
 export class NavigationBarComponent {
-<<<<<<< HEAD
   constructor(private userService: UserService, private router: Router) {}
 
   get isLoggedIn(): boolean {
     return this.userService.isLogged;
   }
-=======
-    get isLoggedIn(): boolean {          
-        return this.userService.isLogged;
-    }
-    constructor(private userService: UserService, private router: Router) {};
->>>>>>> 9e4fc5ab076d854955343499f8196f1c07ad5449
 
   logout() {
     this.userService.logout().subscribe(() => {

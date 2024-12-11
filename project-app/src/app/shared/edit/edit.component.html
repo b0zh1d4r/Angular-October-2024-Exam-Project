@@ -2,6 +2,11 @@
   <div class="form-box">
     <h2>Edit</h2>
     <form [formGroup]="form" (ngSubmit)="editCourse()" class="course-form">
+
+      @if (hasError) {
+        <app-error-msg/>
+      }
+
       <div class="input-group" [class.invalid]="form.get('courseTitle')?.invalid && form.get('courseTitle')?.touched" [class.valid]="form.get('courseTitle')?.valid && form.get('courseTitle')?.touched">
         <label for="courseTitle">Course Title:</label>
         <input

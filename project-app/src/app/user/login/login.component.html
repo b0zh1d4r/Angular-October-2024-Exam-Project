@@ -1,7 +1,9 @@
 <div class="auth-container">
     <div class="form-box">
       <h2>Login</h2>
-
+      @if (hasError) {
+        <app-error-msg/>
+      }
 
       <form [formGroup]="form" (ngSubmit)="login()">
         <div class="input-group" [class.invalid]="form.get('email')?.invalid && form.get('email')?.touched" [class.valid]="form.get('email')?.valid && form.get('email')?.touched">

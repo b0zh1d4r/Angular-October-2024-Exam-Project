@@ -1,5 +1,3 @@
-import { Course } from "./course";
-
 export interface User {
     courses: string[];
     _id: string,
@@ -15,12 +13,10 @@ export interface UserForAuth {
     email: string;
     password: string;
     _id: string;
-    courses: Course[];
   }
   
   export interface ProfileDetails {
     username: string;
     email: string;
     _id: string;
-    courses: Course[];
   }

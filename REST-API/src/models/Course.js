@@ -19,7 +19,7 @@ const courseSchema = new Schema({
   imageUrl: {
     type: String,
     required: [true, "Image is required!"],
-    validate: /^https?:\/\//,
+    validate: [/^https?:\/\//, 'Invalid image URL!'],
   },
   price: {
     type: String,

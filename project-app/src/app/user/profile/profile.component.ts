@@ -18,6 +18,6 @@ export class ProfileComponent implements OnInit {
 
   loadUserProfile(): void {
     const user = this.userService.user;
-    this.user = user;    
+    this.user = user;
   }
 }

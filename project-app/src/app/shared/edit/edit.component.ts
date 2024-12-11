@@ -9,11 +9,13 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { ErrorMsgComponent } from '../../core/error-msg/error-msg.component';
+import { ErrorMsgService } from '../../core/error-msg/error-msg.service';
 
 @Component({
   selector: 'app-edit',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, RouterLink],
+  imports: [FormsModule, ReactiveFormsModule, RouterLink, ErrorMsgComponent],
   templateUrl: './edit.component.html',
   styleUrl: './edit.component.css',
 })
@@ -36,11 +38,18 @@ export class EditComponent implements OnInit {
 
   course = {} as Course;
 
+  hasError: boolean = false;
+
   constructor(
     private route: ActivatedRoute,
     private apiService: ApiService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private errorService: ErrorMsgService
+  ) {
+    this.errorService.apiError$.subscribe((err) => {
+      this.hasError = !!err;
+    });
+  }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['courseId'];
@@ -74,8 +83,15 @@ export class EditComponent implements OnInit {
         imageUrl!,
         description!
       )
-      .subscribe(() => {
+      .subscribe({
+      next: () => {
+        this.hasError = false;
+        this.errorService.clearError();
         this.router.navigate([`/courses/${this.id}`]);
-      });
+      },
+      error: () => {
+        this.hasError = true;
+      },
+    });
   }
 }

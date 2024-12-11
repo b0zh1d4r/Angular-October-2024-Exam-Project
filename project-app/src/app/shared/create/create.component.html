@@ -1,6 +1,11 @@
 <div class="auth-container">
   <div class="form-box">
     <h2>Create a New Course</h2>
+
+    @if (hasError) {
+      <app-error-msg/>
+    }
+
     <form [formGroup]="form" (ngSubmit)="createCourse()" class="course-form">
       <div class="input-group" [class.invalid]="form.get('courseTitle')?.invalid && form.get('courseTitle')?.touched" [class.valid]="form.get('courseTitle')?.valid && form.get('courseTitle')?.touched">
         <label for="courseTitle">Course Title:</label>
