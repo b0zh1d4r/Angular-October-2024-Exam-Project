@@ -29,7 +29,12 @@ const userService = {
 
     return generateResponse(user);
   },
+  async getUserById(id) {
+    const user = await User.findById(id);
+    return user;
+  },
 };
+//const getUserById = (id) => User.findById(id);
 
 function generateResponse(user) {
   const payload = {

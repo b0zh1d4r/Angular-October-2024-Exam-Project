@@ -17,10 +17,7 @@ export class ProfileComponent implements OnInit {
   }
 
   loadUserProfile(): void {
-    const user = this.userService.getUser();
-    this.user = user;
-
-    console.log(this.user);
-    
+    const user = this.userService.user;
+    this.user = user;    
   }
 }

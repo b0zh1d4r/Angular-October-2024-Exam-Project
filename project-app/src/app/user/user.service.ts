@@ -14,7 +14,7 @@ export class UserService implements OnDestroy {
   user: UserForAuth | null = null;
   userSubscription: Subscription | null = null;
 
-  get isLogged(): boolean {    
+  get isLogged(): boolean {
     return !!this.user;
   }
 
@@ -58,16 +58,16 @@ export class UserService implements OnDestroy {
       .pipe(tap((user) => this.user$$.next(user)));
   }
 
-  isOwner(ownerId: string): boolean { 
+  isOwner(ownerId: string): boolean {
     return this.user?._id === ownerId;
   }
 
   getUserId(): string | null {
-    return this.user?._id || null;
+    return null; //this.user?._id || null;
   }
 
   getUser(): UserForAuth | null {
-    return this.user;
+    return null; //this.user;
   }
 
   ngOnDestroy(): void {

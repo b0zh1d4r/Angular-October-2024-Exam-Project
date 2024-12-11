@@ -3,8 +3,9 @@ import { RouterOutlet } from '@angular/router';
 import { NavigationBarComponent } from './core/navigation-bar/navigation-bar.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { HttpClient } from '@angular/common/http';
-import { EditComponent } from "./shared/edit/edit.component";
-import { DetailsComponent } from "./shared/details/details.component";
+import { EditComponent } from './shared/edit/edit.component';
+import { DetailsComponent } from './shared/details/details.component';
+import { AuthenticateComponent } from './authenticate/authenticate/authenticate.component';
 // import { LoginComponent } from './auth/login/login.component';
 // import { RegisterComponent } from './auth/register/register.component';
 // import { CatalogComponent } from "./shared/catalog/catalog.component";
@@ -22,11 +23,11 @@ import { DetailsComponent } from "./shared/details/details.component";
     FooterComponent,
     EditComponent,
     DetailsComponent,
-],
+    AuthenticateComponent,
+  ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent {
   title = 'project-app';
-
 }

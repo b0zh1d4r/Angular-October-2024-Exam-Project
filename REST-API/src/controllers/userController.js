@@ -1,5 +1,6 @@
 import { Router } from "express";
 import userService from "../services/userService.js";
+import { authMiddleware } from "../middlewares/authMiddleware.js";
 
 const userController = Router();
 
@@ -29,16 +30,28 @@ userController.post("/login", async (req, res) => {
       .send(result.user)
       .end();
   } catch (error) {
-    res.status(401).json({ error: error.message });
+    res.status(401).json({ message: error.message });
   }
 });
 
 userController.post("/logout", async (req, res) => {
   try {
-    res.clearCookie("auth-cookie");
+    res.clearCookie("auth");
     res.status(200).json({ message: "Logout successful" });
   } catch (error) {
     res.status(500).json({ error: error.message });
+  }
+});
+
+userController.get("/profile", authMiddleware, async (req, res) => {
+  const { _id: userId } = req.user;
+
+  try {
+    const user = await userService.getUserById(userId);
+
+    res.status(200).json(user).end();
+  } catch (error) {
+    res.status(500).json({ message: error.message }).end();
   }
 });
 

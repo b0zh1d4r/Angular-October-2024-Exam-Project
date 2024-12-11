@@ -14,6 +14,8 @@ export class ErrorMsgComponent implements OnInit {
 
   ngOnInit(): void {
     this.errorMsgService.apiError$.subscribe((err: any) => {
+      console.log(err);
+
       this.errorMsg = err?.error?.message;
     });
   }

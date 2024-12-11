@@ -14,6 +14,7 @@ import { UserService } from '../../user/user.service';
 export class DetailsComponent implements OnInit {
   course = {} as Course;
   isOwner = false;
+  isSignedOut = false
 
   constructor(
     private route: ActivatedRoute,
@@ -31,9 +32,14 @@ export class DetailsComponent implements OnInit {
 
     this.apiService.getSingleCourse(id).subscribe(course => {
       this.course = course;
+
+      if (this.course.signedOut.find((id) => id === this.userService.user?._id)) {
+        this.isSignedOut = true;
+      }
       
       this.checkOwnership(course._ownerId);
     });
+    
   }
 
   checkOwnership(ownerId: string): void {
@@ -56,14 +62,14 @@ export class DetailsComponent implements OnInit {
   }
 
   signOutForCourse(): void {
+    
     if (this.isOwner) {
       alert('You are not able to sign out of this course!');
       return;
     }
-
     const courseId = this.route.snapshot.params['courseId'];
-    const userId = this.userService.getUserId();
-
+    const userId = this.userService.user?._id;
+    
     if (!userId) {
       alert('You must be logged in to sign out of a course.');
       return;
