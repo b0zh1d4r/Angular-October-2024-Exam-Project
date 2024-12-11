@@ -14,14 +14,14 @@ export class UserService implements OnDestroy {
   user: UserForAuth | null = null;
   userSubscription: Subscription | null = null;
 
-  get isLogged(): boolean {
-    return !!this.user;
-  }
-
   constructor(private http: HttpClient) {
     this.user$.subscribe((user) => {
       this.user = user;
     });
+  }
+
+  get isLogged(): boolean {
+    return !!this.user;
   }
 
   login(email: string, password: string) {

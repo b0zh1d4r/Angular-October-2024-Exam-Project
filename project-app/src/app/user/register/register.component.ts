@@ -66,7 +66,7 @@ export class RegisterComponent {
     } = this.form.value;
 
     this.userService
-      .register(username!, email!, password!, rePassword!) // They will be there for sure.
+      .register(username!, email!, password!, rePassword!)
       .subscribe({
         next: () => {
           this.hasError = false;
