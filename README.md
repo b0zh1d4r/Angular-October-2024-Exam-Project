@@ -29,7 +29,7 @@ If everything is normal you will see the following messages:
         - cd project-app
         - npm install
 
-2. Start the Application:
+3. Start the Application:
     - ng serve
 
 The SPA will typically be available at http://localhost:4200.
