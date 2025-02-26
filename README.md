@@ -9,10 +9,11 @@ This guide explains how to install dependencies and start both the server and th
 1. Install dependencies for the REST-API server:
 
     Open Terminal, navigate and install:
+   
     - cd REST-API
     - npm install
 
-2. Start the REST-API server:
+3. Start the REST-API server:
     - npm run dev
 
 If everything is normal you will see the following messages:
