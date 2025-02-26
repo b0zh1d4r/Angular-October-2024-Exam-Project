@@ -26,7 +26,6 @@ If everything is normal you will see the following messages:
 1. Install dependencies for the client (SPA):
 
     Open Terminal, navigate and install:
-
         - cd project-app
         - npm install
 
