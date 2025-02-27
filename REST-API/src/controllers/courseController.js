@@ -24,7 +24,7 @@ courseController.post("/create", async (req, res) => {
     };
 
     const course = await courseService.create(courseData, userId);
-    res.status(201).json(course); // Changed to 201 for successful creation
+    res.status(201).json(course);
   } catch (err) {
     const error = getErrorMessage(err);
     res.status(500).json({ message: error });
